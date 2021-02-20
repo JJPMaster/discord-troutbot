@@ -16,7 +16,7 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('/trout'):
 		if str(message.author) != 'TroutBot!#7528':
-			await message.channel.send('{} slaps {} around a bit with a large trout'.format(message.author.mention, message.content[7:]) + the_image())
+			await message.channel.send('{} slaps {} around a bit with a large trout'.format(message.author.mention, message.content[7:]))
 			async with aiohttp.ClientSession() as session:
 				async with session.get(image) as resp:
 					if resp.status != 200:
