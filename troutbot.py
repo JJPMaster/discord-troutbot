@@ -6,7 +6,8 @@ import io
 import aiohttp
 import os
 TOKEN = os.environ['DISCORD_TOKEN']
-image = 'https://upload.wikimedia.org/wikipedia/commons/1/16/Rainbow_trout_transparent.png'
+image = 'px-Rainbow_trout_transparent.png'
+self = '812453966025719808'
 @bot.event
 async def on_ready():
 	print(f'Bot connected as {bot.user}')
@@ -14,18 +15,11 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.content.startswith('/trout'):
-		if str(message.author) != 'TroutBot!#7528':
-			await message.channel.send('{} slaps {} around a bit with a large trout'.format(message.author.mention, message.content[7:]))
-			async with aiohttp.ClientSession() as session:
-				async with session.get(image) as resp:
-					if resp.status != 200:
-						return await message.channel.send('Could not download file...')
-					data = io.BytesIO(await resp.read())
-					await message.channel.send(file=discord.File(data, 'cool_image.png'))
-
+	if message.content.startswith('/trout'):
+		if message.author.id != self:
+			await message.channel.send('{} slaps {} around a bit with a large trout'.format(message.author.mention, message.content[7:]), file=discord.File(image))
 		else:
-			await message.channel.send('Please don\'t do that.')
+			await message.channel.send('Please refrain from doing that in the future.')
 @bot.command()
 async def trout(ctx):
 	await ctx.channel.send('hi')
