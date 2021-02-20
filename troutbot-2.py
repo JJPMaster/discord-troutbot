@@ -25,4 +25,4 @@ bot.command()
 async def trout(ctx):
 	await ctx.channel.send('hi')
 
-bot.run('ODEyNDUzOTY2MDI1NzE5ODA4.YDA-uA.Qe6SpVXPqPKqhHP1RXjoI6axbJo')
+bot.run('DISCORD_TOKEN')
